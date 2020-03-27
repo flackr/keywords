@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./third_party/code.getmdl.io/1.3.0/material.min.css">
+    <script src="./third_party/code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="ui.css">
+    <!-- For rapid development, use this script instead of bundle.js.
+    <script src="build/bundle.js"></script>
+    -->
+    <script src="src/ui.js" type="module"></script>
+    <title>Keywords</title>
+  </head>
+  <body>
+
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header">
+				<div class="mdl-layout__header-row">
+					<!-- Title -->
+					<span class="mdl-layout-title">Keywords</span>
+					<!-- Add spacer, to align navigation to the right -->
+					<div class="mdl-layout-spacer"></div>
+					<button id="menu"
+                  class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">more_vert</i>
+          </button>
+
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+              for="menu">
+            <li class="mdl-menu__item" id="leave-button">Leave</li>
+            <li class="mdl-menu__item" id="logout">Logout</li>
+          </ul>
+				</div>
+			</header>
+
+
+      <div class="page-content" id="loading">
+        Loading...
+      </div>
+      <div class="page-content app-page" id="page-login">
+        <div id="menu" class="demo-card-wide mdl-card mdl-shadow--2dp">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text title">Login</h2>
+          </div>
+          <p>Log in with a Matrix user id and password. Create a Matrix account at <a href="https://riot.im/app/#/register">riot.im/app</a>.</p>
+          <form id="login-form">
+            <div class="mdl-card__supporting-text details">
+              <p>User id</p>
+              <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="login-user-id" value="">
+                <label class="mdl-textfield__label" for="login-user-id">Username...</label>
+              </div>
+              <p>Password</p>
+              <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="password" id="login-password" value="">
+                <label class="mdl-textfield__label" for="login-password">Password...</label>
+              </div>
+              <br>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <input type="submit" value="Login" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+              </input>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="page-content" id="page-list">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="#create">
+          Create game
+        </a>
+        <div id="rooms"></div>
+      </div>
+      <div class="page-content" id="page-create">
+        <form id="create-form">
+          <ul class="demo-list-control mdl-list">
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons  mdl-list__item-avatar">person</i>
+                <i class="material-icons  mdl-list__item-avatar">people</i>
+                Versus
+              </span>
+              <span class="mdl-list__item-secondary-action">
+                <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-option-1">
+                  <input type="radio" id="list-option-1" class="mdl-radio__button" name="mode" value="versus" checked />
+                </label>
+              </span>
+            </li>
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons  mdl-list__item-avatar">people</i>
+                <i class="material-icons  mdl-list__item-avatar">people</i>
+                Co-operative
+              </span>
+              <span class="mdl-list__item-secondary-action">
+                <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-option-2">
+                  <input type="radio" id="list-option-2" class="mdl-radio__button" name="mode" value="coop" checked />
+                </label>
+              </span>
+            </li>
+          </ul>
+          <h2>Word lists</h2>
+          <ul id="wordlists"></ul>
+          <br>
+          <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value="Create game">
+        </form>
+      </div>
+      <div class="page-content" id="page-game">
+        <div class="teams">
+          <div class="red team demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text title">Red team</h2>
+            </div>
+            <div class="mdl-card__supporting-text details">
+              <div class="clue">
+                <h5>Cluegiver</h5>
+                <div class="list"></div>
+              </div>
+              <div class="players">
+                <h5>Players</h5>
+                <div class="list"></div>
+              </div>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect join">
+                Join
+              </a>
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect join clue">
+                Clue
+              </a>
+            </div>
+          </div>
+          <div class="blue team demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text title">Blue team</h2>
+            </div>
+            <div class="mdl-card__supporting-text details">
+              <div class="clue">
+                <h5>Cluegiver</h5>
+                <div class="list"></div>
+              </div>
+              <div class="players">
+                <h5>Players</h5>
+                <div class="list"></div>
+              </div>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect join">
+                Join
+              </a>
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect join clue">
+                Clue
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="playing">
+          <div class="topbar">
+            <div class="entry">
+              <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="clue-id" value="">
+                <label class="mdl-textfield__label" for="clue-id">Enter a clue... e.g. Word 3</label>
+              </div>
+            </div>
+            <div class="display">
+              <h1 class="clue" id="clue-display"></h1>
+            </div>
+          </div>
+          <div class="board"></div>
+          <button id="done" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+            <i class="material-icons">done</i>
+          </button>    
+          <div class="chat">
+            <div id="game-log"></div>
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="game-chat" value="">
+              <label class="mdl-textfield__label" for="game-chat">Enter a message</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="templates">
+      <div class="log-message">
+        <span class="time">12:47 pm</span>
+        <span class="sender">@testuser:server.com</span>
+        <span class="body">Test message</p>
+      </div>
+      <div class="chat-message">
+        <p class="author">
+          <span class="sender">@testuser:server.com</span>
+          <span class="time">12:47 pm</span>
+        </p>
+        <p class="body">Test message</p>
+      </div>
+      <div class="player-token">
+        <p class="sender">@testuser:server.com</p>
+      </div>
+      <button class="board-word mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+        <span class="word">WORD</span>
+      </button>
+      <div class="room demo-card-wide mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text title">Topic</h2>
+        </div>
+        <div class="mdl-card__supporting-text details">
+          Details about the game...
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect join">
+            Play
+          </a>
+        </div>
+      </div>
+      <li class="wordlist mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+          <i class="material-icons  mdl-list__item-avatar">note</i>
+          <span class="label">Easy words</span>
+        </span>
+        <span class="mdl-list__item-secondary-action">
+          <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="">
+            <input type="checkbox" id="" class="mdl-checkbox__input" checked />
+          </label>
+        </span>
+      </li>
+    </div>
+		<div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+      <div class="mdl-snackbar__text"></div>
+      <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+  </body>
+</html>

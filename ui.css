@@ -1,0 +1,161 @@
+#menu {
+  width: auto;
+  margin: 3rem;
+}
+
+.page-content:not(.visible) {
+  display: none !important;
+}
+
+#templates {
+  display: none;
+}
+
+.teams {
+  display: flex;
+}
+
+.team {
+  width: 50%;
+  height: 100%;
+  overflow: auto;
+}
+
+.red .title {
+  color: red;
+}
+
+.blue .title {
+  color: blue;
+}
+
+#page-game[mode=coop] .teams .clue {
+  display: none;
+}
+
+.teams, .playing {
+  display: none;
+}
+
+#page-game[stage=setup] > .teams {
+  display: flex;
+}
+
+#page-game[stage=playing] > .playing {
+  display: block;
+}
+
+.board {
+  text-align: center;
+}
+
+.board-word {
+  width: 120px;
+  height: 120px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+button.reveal-none {
+  background-color: #777 !important;
+}
+
+button.green {
+  background-color: #aaffaa !important;
+}
+
+button.death {
+  background-blend-mode: color-dodge;
+  background-image: url(images/skull.png);
+  background-size: contain;
+  background-repeat: none;
+  color: white;
+  font-weight: bold;
+  background-repeat: no-repeat;
+}
+
+button.death > .word {
+  filter: drop-shadow(1px 2px 4px black);
+}
+
+.entry > .mdl-textfield, .chat > .mdl-textfield {
+  width: 100%;
+}
+
+#game-log {
+  overflow: auto;
+  flex: 1;
+}
+
+button.reveal-green {
+  background-color: green !important;
+}
+
+button.reveal-red {
+  background-color: red !important;
+  color: white !important;
+}
+
+button.reveal-blue {
+  background-color: blue !important;
+  color: white !important;
+}
+
+button.reveal-death {
+  background-blend-mode: normal;
+  background-color: black !important;
+  background-image: url(images/skull.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+.chat-message .body {
+  padding-left: 1em;
+}
+
+.playing {
+  padding-bottom: 30vh; /* Allow chat to be scrolled below content */
+}
+
+#done {
+  background-color: green;
+  color: white;
+  position: fixed;
+  bottom: 30vh;
+  right: 0;
+  margin: 15px;
+  display: none;
+}
+
+.playing.guess #done{
+  display: block;
+}
+
+.chat {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10px;
+}
+
+.author, .log-message {
+  margin: 0;
+  font-size: 12px;
+}
+
+.red {
+  color: red;
+}
+
+.blue {
+  color: blue;
+}
