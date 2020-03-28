@@ -558,6 +558,7 @@ function gameChatKeypress(evt) {
       msgtype: 'm.text',
       body: msg,
     });
+    evt.target.parentElement.classList.remove('is-dirty');
   }
 }
 
@@ -570,6 +571,7 @@ function clueTextboxKeypress(evt) {
     currentGame.sendEvent(CLUE_EVENT, {
       clue,
     });
+    evt.target.parentElement.classList.remove('is-dirty');
   }
 }
 

@@ -159,3 +159,8 @@ button.reveal-death {
 .blue {
   color: blue;
 }
+
+input[type=text] {
+  background-color: #f0f0f0;
+  border-radius: 3px 3px 0px 0px;
+}
