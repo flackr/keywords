@@ -48,6 +48,7 @@ function onhashchange() {
       loadGame(window.location.hash.substring(6));
       return;
     }
+    $('.mdl-layout-title').textContent = "Keywords";
     // If authenticated, default to the listing page if a valid page is not
     // specified.
     if (['#list', '#create'].indexOf(window.location.hash) == -1)
@@ -578,11 +579,11 @@ function donePress() {
   currentGame.sendEvent(DONE_EVENT, {});  
 }
 
-function leaveRoom() {
+async function leaveRoom() {
   if (!currentGame)
     return;
-  currentGame.leave();
   window.location.hash = 'list';
+  await currentGame.leave();
   updateListings();
 }
 
