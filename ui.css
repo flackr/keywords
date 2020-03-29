@@ -160,7 +160,7 @@ button.reveal-death {
   color: blue;
 }
 
-input[type=text] {
+input[type=text],input[type=password] {
   background-color: #f0f0f0;
   border-radius: 3px 3px 0px 0px;
 }
