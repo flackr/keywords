@@ -41,12 +41,23 @@
   display: flex;
 }
 
+#page-game[stage=playing] {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
 #page-game[stage=playing] > .playing {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .board {
+  flex: 1 1 auto;
   text-align: center;
+  overflow-y: auto;
+  margin: 0 11px;
+  min-height: 120px;
 }
 
 .board-word {
@@ -114,10 +125,6 @@ button.reveal-death {
   padding-left: 1em;
 }
 
-.playing {
-  padding-bottom: 30vh; /* Allow chat to be scrolled below content */
-}
-
 #done {
   background-color: green;
   color: white;
@@ -133,8 +140,6 @@ button.reveal-death {
 }
 
 .chat {
-  position: fixed;
-  bottom: 0;
   width: 100%;
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.8);
