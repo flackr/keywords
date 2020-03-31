@@ -49,11 +49,12 @@
 #page-game[stage=playing] > .playing {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   height: 100%;
 }
 
 .board {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   text-align: center;
   overflow-y: auto;
   margin: 0 11px;
@@ -146,7 +147,9 @@ button.reveal-death {
   border: 1px solid #aaa;
   box-sizing: border-box;
   border-radius: 5px;
-  height: 30vh;
+  max-height: 30vh;
+  min-height: 120px;
+  flex: 1 0 120px;
   display: flex;
   flex-direction: column;
   padding: 0px 10px;
