@@ -147,9 +147,8 @@ button.reveal-death {
   border: 1px solid #aaa;
   box-sizing: border-box;
   border-radius: 5px;
-  max-height: 30vh;
-  min-height: 120px;
-  flex: 1 0 120px;
+  min-height: 240px;
+  flex: 1 0 240px;
   display: flex;
   flex-direction: column;
   padding: 0px 10px;
