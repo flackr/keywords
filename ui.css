@@ -51,6 +51,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  position: relative;
 }
 
 .board {
@@ -129,10 +130,9 @@ button.reveal-death {
 #done {
   background-color: green;
   color: white;
-  position: fixed;
-  bottom: 30vh;
-  right: 0;
-  margin: 15px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
   display: none;
 }
 
