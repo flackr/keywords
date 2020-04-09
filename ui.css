@@ -41,12 +41,25 @@
   display: flex;
 }
 
+#page-game[stage=playing] {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
 #page-game[stage=playing] > .playing {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  position: relative;
 }
 
 .board {
+  flex: 0 1 auto;
   text-align: center;
+  overflow-y: auto;
+  margin: 0 11px;
+  min-height: 120px;
 }
 
 .board-word {
@@ -114,17 +127,12 @@ button.reveal-death {
   padding-left: 1em;
 }
 
-.playing {
-  padding-bottom: 30vh; /* Allow chat to be scrolled below content */
-}
-
 #done {
   background-color: green;
   color: white;
-  position: fixed;
-  bottom: 30vh;
-  right: 0;
-  margin: 15px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
   display: none;
 }
 
@@ -133,15 +141,14 @@ button.reveal-death {
 }
 
 .chat {
-  position: fixed;
-  bottom: 0;
   width: 100%;
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.8);
   border: 1px solid #aaa;
   box-sizing: border-box;
   border-radius: 5px;
-  height: 30vh;
+  min-height: 240px;
+  flex: 1 0 240px;
   display: flex;
   flex-direction: column;
   padding: 0px 10px;
